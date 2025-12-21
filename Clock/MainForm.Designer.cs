@@ -36,6 +36,11 @@
             this.cbShowWeekday = new System.Windows.Forms.CheckBox();
             this.btnHideControls = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вклЭлемУправToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьДатуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.показатьДеньНеделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelTime
@@ -95,6 +100,37 @@
             this.notifyIcon.Text = "System tray";
             this.notifyIcon.Visible = true;
             this.notifyIcon.DoubleClick += new System.EventHandler(this.notifyIcon_DoubleClick);
+            this.notifyIcon.MouseClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseClick);
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вклЭлемУправToolStripMenuItem,
+            this.показатьДатуToolStripMenuItem,
+            this.показатьДеньНеделиToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(195, 70);
+            // 
+            // вклЭлемУправToolStripMenuItem
+            // 
+            this.вклЭлемУправToolStripMenuItem.Name = "вклЭлемУправToolStripMenuItem";
+            this.вклЭлемУправToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.вклЭлемУправToolStripMenuItem.Text = "Вкл. элем. управ.";
+            this.вклЭлемУправToolStripMenuItem.Click += new System.EventHandler(this.вклЭлемУправToolStripMenuItem_Click);
+            // 
+            // показатьДатуToolStripMenuItem
+            // 
+            this.показатьДатуToolStripMenuItem.Name = "показатьДатуToolStripMenuItem";
+            this.показатьДатуToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.показатьДатуToolStripMenuItem.Text = "Показать дату";
+            this.показатьДатуToolStripMenuItem.Click += new System.EventHandler(this.показатьДатуToolStripMenuItem_Click);
+            // 
+            // показатьДеньНеделиToolStripMenuItem
+            // 
+            this.показатьДеньНеделиToolStripMenuItem.Name = "показатьДеньНеделиToolStripMenuItem";
+            this.показатьДеньНеделиToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.показатьДеньНеделиToolStripMenuItem.Text = "Показать день недели";
+            this.показатьДеньНеделиToolStripMenuItem.Click += new System.EventHandler(this.показатьДеньНеделиToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -113,6 +149,7 @@
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.Text = "Clock PV_521";
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,6 +163,10 @@
         private System.Windows.Forms.CheckBox cbShowWeekday;
         private System.Windows.Forms.Button btnHideControls;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem вклЭлемУправToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem показатьДатуToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem показатьДеньНеделиToolStripMenuItem;
     }
 }
 

@@ -12,9 +12,13 @@ namespace Clock
 {
     public partial class MainForm : Form
     {
+
         public MainForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.Manual;
+            Rectangle wa = Screen.PrimaryScreen.WorkingArea;
+            this.Location = new Point((wa.Right - this.Width + 8), 0);
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -27,13 +31,17 @@ namespace Clock
 
             if (cbShowDate.Checked)
             {
-               
+
                 labelTime.Text += $"\n{DateTime.Now.ToString("yyyy.MM.dd")}";
             }
 
-            if (cbShowWeekday.Checked) 
+            if (cbShowWeekday.Checked)
             {
-                labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
+                //На русском
+                labelTime.Text += $"\n{DateTime.Now.ToString("dddd")}"; 
+
+                //На английском
+                //labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
             }
 
             notifyIcon.Text = labelTime.Text;
@@ -47,6 +55,18 @@ namespace Clock
             this.ShowInTaskbar = visible;
             this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
+        }
+        bool IsVisible()
+        {
+            if(!cbShowDate.Visible ||  !cbShowWeekday.Visible || !btnHideControls.Visible) return false;
+
+            return true;
+        }
+
+        void Switch_CheckBox(CheckBox checkBox)
+        {
+            if (checkBox.Checked) checkBox.Checked = false;
+            else checkBox.Checked = true;
         }
 
         private void btnHideControls_Click(object sender, EventArgs e)
@@ -63,6 +83,29 @@ namespace Clock
         {
             this.TopMost = true;
             this.TopMost = false;
+        }
+
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip.Show(e.Location);
+            }
+        }
+
+        private void вклЭлемУправToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetVisibility(!IsVisible());
+        }
+
+        private void показатьДатуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Switch_CheckBox(cbShowDate);
+        }
+
+        private void показатьДеньНеделиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Switch_CheckBox(cbShowWeekday);
         }
     }
 }
