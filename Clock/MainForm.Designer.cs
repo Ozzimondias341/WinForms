@@ -37,9 +37,12 @@
             this.btnHideControls = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.вклЭлемУправToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.вклЭлемУправленияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьДатуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьДеньНеделиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.тестToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.поверхОконToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +57,7 @@
             this.labelTime.Size = new System.Drawing.Size(224, 42);
             this.labelTime.TabIndex = 0;
             this.labelTime.Text = "CurrentTime";
+            this.labelTime.MouseClick += new System.Windows.Forms.MouseEventHandler(this.labelTime_MouseClick);
             this.labelTime.MouseHover += new System.EventHandler(this.labelTime_MouseHover);
             // 
             // timer
@@ -105,32 +109,55 @@
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.вклЭлемУправToolStripMenuItem,
-            this.показатьДатуToolStripMenuItem,
-            this.показатьДеньНеделиToolStripMenuItem});
+            this.видToolStripMenuItem,
+            this.тестToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(195, 70);
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 70);
             // 
-            // вклЭлемУправToolStripMenuItem
+            // видToolStripMenuItem
             // 
-            this.вклЭлемУправToolStripMenuItem.Name = "вклЭлемУправToolStripMenuItem";
-            this.вклЭлемУправToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.вклЭлемУправToolStripMenuItem.Text = "Вкл. элем. управ.";
-            this.вклЭлемУправToolStripMenuItem.Click += new System.EventHandler(this.вклЭлемУправToolStripMenuItem_Click);
+            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.вклЭлемУправленияToolStripMenuItem,
+            this.показатьДатуToolStripMenuItem,
+            this.показатьДеньНеделиToolStripMenuItem,
+            this.поверхОконToolStripMenuItem});
+            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
+            this.видToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.видToolStripMenuItem.Text = "Вид";
+            // 
+            // вклЭлемУправленияToolStripMenuItem
+            // 
+            this.вклЭлемУправленияToolStripMenuItem.Name = "вклЭлемУправленияToolStripMenuItem";
+            this.вклЭлемУправленияToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.вклЭлемУправленияToolStripMenuItem.Text = "Вкл элем управления";
+            this.вклЭлемУправленияToolStripMenuItem.Click += new System.EventHandler(this.вклЭлемУправленияToolStripMenuItem_Click);
             // 
             // показатьДатуToolStripMenuItem
             // 
             this.показатьДатуToolStripMenuItem.Name = "показатьДатуToolStripMenuItem";
             this.показатьДатуToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.показатьДатуToolStripMenuItem.Text = "Показать дату";
-            this.показатьДатуToolStripMenuItem.Click += new System.EventHandler(this.показатьДатуToolStripMenuItem_Click);
+            this.показатьДатуToolStripMenuItem.Click += new System.EventHandler(this.показатьДатуToolStripMenuItem_Click_1);
             // 
             // показатьДеньНеделиToolStripMenuItem
             // 
             this.показатьДеньНеделиToolStripMenuItem.Name = "показатьДеньНеделиToolStripMenuItem";
             this.показатьДеньНеделиToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.показатьДеньНеделиToolStripMenuItem.Text = "Показать день недели";
-            this.показатьДеньНеделиToolStripMenuItem.Click += new System.EventHandler(this.показатьДеньНеделиToolStripMenuItem_Click);
+            this.показатьДеньНеделиToolStripMenuItem.Click += new System.EventHandler(this.показатьДеньНеделиToolStripMenuItem_Click_1);
+            // 
+            // тестToolStripMenuItem
+            // 
+            this.тестToolStripMenuItem.Name = "тестToolStripMenuItem";
+            this.тестToolStripMenuItem.Size = new System.Drawing.Size(97, 22);
+            this.тестToolStripMenuItem.Text = "Тест";
+            // 
+            // поверхОконToolStripMenuItem
+            // 
+            this.поверхОконToolStripMenuItem.Name = "поверхОконToolStripMenuItem";
+            this.поверхОконToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.поверхОконToolStripMenuItem.Text = "Поверх окон";
+            this.поверхОконToolStripMenuItem.Click += new System.EventHandler(this.поверхОконToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -164,9 +191,12 @@
         private System.Windows.Forms.Button btnHideControls;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem вклЭлемУправToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem вклЭлемУправленияToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показатьДатуToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показатьДеньНеделиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem тестToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem поверхОконToolStripMenuItem;
     }
 }
 

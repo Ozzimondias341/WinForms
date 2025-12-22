@@ -56,18 +56,7 @@ namespace Clock
             this.FormBorderStyle = visible ? FormBorderStyle.FixedSingle : FormBorderStyle.None;
             this.TransparencyKey = visible ? Color.Empty : this.BackColor;
         }
-        bool IsVisible()
-        {
-            if(!cbShowDate.Visible ||  !cbShowWeekday.Visible || !btnHideControls.Visible) return false;
-
-            return true;
-        }
-
-        void Switch_CheckBox(CheckBox checkBox)
-        {
-            if (checkBox.Checked) checkBox.Checked = false;
-            else checkBox.Checked = true;
-        }
+       
 
         private void btnHideControls_Click(object sender, EventArgs e)
         {
@@ -81,8 +70,7 @@ namespace Clock
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.TopMost = false;
+            OnTop();
         }
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
@@ -93,19 +81,53 @@ namespace Clock
             }
         }
 
-        private void вклЭлемУправToolStripMenuItem_Click(object sender, EventArgs e)
+        private void labelTime_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                contextMenuStrip.Show(e.Location);
+            }
+        }
+
+        private void вклЭлемУправленияToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetVisibility(!IsVisible());
         }
 
-        private void показатьДатуToolStripMenuItem_Click(object sender, EventArgs e)
+        private void показатьДатуToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Switch_CheckBox(cbShowDate);
         }
 
-        private void показатьДеньНеделиToolStripMenuItem_Click(object sender, EventArgs e)
+        private void показатьДеньНеделиToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Switch_CheckBox(cbShowWeekday);
         }
+
+        private void поверхОконToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OnTop();
+        }
+
+
+        bool IsVisible()
+        {
+            if (!cbShowDate.Visible || !cbShowWeekday.Visible || !btnHideControls.Visible) return false;
+
+            return true;
+        }
+
+        void Switch_CheckBox(CheckBox checkBox)
+        {
+            if (checkBox.Checked) checkBox.Checked = false;
+            else checkBox.Checked = true;
+        }
+
+        void OnTop()
+        {
+            this.TopMost = true;
+            this.TopMost = false;
+        }
+
     }
 }
