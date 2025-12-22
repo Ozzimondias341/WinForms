@@ -61,8 +61,29 @@ namespace Clock
 
         private void notifyIcon_DoubleClick(object sender, EventArgs e)
         {
+            OnTop();
+        }
+
+
+        void OnTop()
+        {
             this.TopMost = true;
             this.TopMost = false;
+        }
+
+        private void показатьДатуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsmiTopmost_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
