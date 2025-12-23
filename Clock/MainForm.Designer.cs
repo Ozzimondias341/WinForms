@@ -55,6 +55,7 @@
             this.cbShowWeekday = new System.Windows.Forms.CheckBox();
             this.btnHideControls = new System.Windows.Forms.Button();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.colorDialog = new System.Windows.Forms.ColorDialog();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@
             this.toolStripSeparator6,
             this.tsmiQuit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(210, 282);
+            this.contextMenuStrip.Size = new System.Drawing.Size(210, 260);
             // 
             // tsmiTopmost
             // 
@@ -121,7 +122,6 @@
             this.tsmiShowDate.Size = new System.Drawing.Size(209, 22);
             this.tsmiShowDate.Text = "Show date";
             this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
-            this.tsmiShowDate.Click += new System.EventHandler(this.показатьДатуToolStripMenuItem_Click);
             // 
             // tsmiShowWeekday
             // 
@@ -166,14 +166,16 @@
             // tsmiForegroundColor
             // 
             this.tsmiForegroundColor.Name = "tsmiForegroundColor";
-            this.tsmiForegroundColor.Size = new System.Drawing.Size(168, 22);
+            this.tsmiForegroundColor.Size = new System.Drawing.Size(180, 22);
             this.tsmiForegroundColor.Text = "Foreground color";
+            this.tsmiForegroundColor.Click += new System.EventHandler(this.tsmiForegroundColor_Click);
             // 
             // tsmiBackgroundColor
             // 
             this.tsmiBackgroundColor.Name = "tsmiBackgroundColor";
-            this.tsmiBackgroundColor.Size = new System.Drawing.Size(168, 22);
+            this.tsmiBackgroundColor.Size = new System.Drawing.Size(180, 22);
             this.tsmiBackgroundColor.Text = "Background color";
+            this.tsmiBackgroundColor.Click += new System.EventHandler(this.tsmiBackgroundColor_Click);
             // 
             // toolStripSeparator4
             // 
@@ -309,6 +311,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiShowControls;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem tsmiQuit;
+        private System.Windows.Forms.ColorDialog colorDialog;
     }
 }
 

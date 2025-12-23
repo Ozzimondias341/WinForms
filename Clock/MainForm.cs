@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +17,7 @@ namespace Clock
         public MainForm()
         {
             InitializeComponent();
+            labelTime.Font = LoadFont();
             SetVisibility(false);
         }
 
@@ -102,5 +105,40 @@ namespace Clock
             cbShowWeekday.Checked = tsmiShowWeekday.Checked;
 
         private void tsmiQuit_Click(object sender, EventArgs e) => this.Close();
+
+        private void tsmiForegroundColor_Click(object sender, EventArgs e)
+        {
+            colorDialog.ShowDialog();
+            labelTime.ForeColor = colorDialog.Color;
+        }
+
+        private void tsmiBackgroundColor_Click(object sender, EventArgs e)
+        {
+            colorDialog.ShowDialog();
+            labelTime.BackColor = colorDialog.Color;
+        }
+
+
+
+
+
+
+
+
+
+
+
+        Font LoadFont()
+            {
+            var pfc = new PrivateFontCollection();
+            byte[] data = Properties.Resources.SnowForSanta;
+
+            IntPtr ptr = Marshal.AllocCoTaskMem(data.Length);
+            Marshal.Copy(data, 0, ptr, data.Length);
+            pfc.AddMemoryFont(ptr, data.Length);
+            Marshal.FreeCoTaskMem(ptr);
+
+            return new Font(pfc.Families[0], 28, FontStyle.Bold);
+        }
     }
 }
