@@ -60,7 +60,6 @@
             // 
             // labelTime
             // 
-            this.labelTime.AutoSize = true;
             this.labelTime.BackColor = System.Drawing.SystemColors.Highlight;
             this.labelTime.ContextMenuStrip = this.contextMenuStrip;
             this.labelTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -91,7 +90,7 @@
             this.toolStripSeparator6,
             this.tsmiQuit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(210, 282);
+            this.contextMenuStrip.Size = new System.Drawing.Size(210, 260);
             // 
             // tsmiTopmost
             // 

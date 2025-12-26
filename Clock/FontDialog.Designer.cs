@@ -33,6 +33,8 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.directorySearcher1 = new System.DirectoryServices.DirectorySearcher();
+            this.numericUpDownFontSize = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxFont
@@ -41,7 +43,7 @@
             this.comboBoxFont.FormattingEnabled = true;
             this.comboBoxFont.Location = new System.Drawing.Point(12, 12);
             this.comboBoxFont.Name = "comboBoxFont";
-            this.comboBoxFont.Size = new System.Drawing.Size(415, 21);
+            this.comboBoxFont.Size = new System.Drawing.Size(334, 21);
             this.comboBoxFont.TabIndex = 0;
             this.comboBoxFont.SelectedIndexChanged += new System.EventHandler(this.comboBoxFont_SelectedIndexChanged);
             // 
@@ -83,11 +85,35 @@
             this.directorySearcher1.ServerPageTimeLimit = System.TimeSpan.Parse("-00:00:01");
             this.directorySearcher1.ServerTimeLimit = System.TimeSpan.Parse("-00:00:01");
             // 
+            // numericUpDownFontSize
+            // 
+            this.numericUpDownFontSize.Location = new System.Drawing.Point(352, 12);
+            this.numericUpDownFontSize.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.numericUpDownFontSize.Minimum = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+            this.numericUpDownFontSize.Name = "numericUpDownFontSize";
+            this.numericUpDownFontSize.Size = new System.Drawing.Size(75, 20);
+            this.numericUpDownFontSize.TabIndex = 4;
+            this.numericUpDownFontSize.Value = new decimal(new int[] {
+            22,
+            0,
+            0,
+            0});
+            this.numericUpDownFontSize.ValueChanged += new System.EventHandler(this.numericUpDownFontSize_ValueChanged);
+            // 
             // FontDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 273);
+            this.Controls.Add(this.numericUpDownFontSize);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.labelExample);
@@ -99,6 +125,7 @@
             this.Text = "FontDialog";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.FontDialog_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownFontSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -111,5 +138,6 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Button buttonCancel;
         private System.DirectoryServices.DirectorySearcher directorySearcher1;
+        private System.Windows.Forms.NumericUpDown numericUpDownFontSize;
     }
 }
