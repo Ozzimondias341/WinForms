@@ -16,7 +16,9 @@ namespace Clock
 {
     public partial class FontDialog : Form
     {
-            public Font Font { get; set; }
+        public Font Font { get; set; }
+        public string Filename { get; set; }
+
         int lastChosenIndex;
         int lastChosenWidth;
         public FontDialog()
@@ -28,6 +30,17 @@ namespace Clock
             lastChosenWidth = 22;
             comboBoxFont.SelectedIndex = 1;
         }
+        public FontDialog(string fontName) : this()
+        {
+            Filename = fontName;
+            lastChosenIndex = comboBoxFont.FindString(fontName);
+            if (lastChosenIndex == -1) lastChosenIndex = 1;
+            comboBoxFont.SelectedIndex = lastChosenIndex;
+            SetFont();
+            Font = labelExample.Font;
+        }
+
+
 
         private void FontDialog_Load(object sender, EventArgs e)
         {
@@ -38,7 +51,7 @@ namespace Clock
         {
             string currentDir = Application.ExecutablePath;
             Directory.SetCurrentDirectory($"{currentDir}\\..\\..\\..\\Fonts");
-            
+
             //MessageBox.Show
             //    (
             //    this,
@@ -53,7 +66,7 @@ namespace Clock
             //comboBoxFont.Items.AddRange(files); //Добавляет содержимое массива в comboBox
             for (int i = 0; i < files.Length; i++)
             {
-                comboBoxFont.Items.Add( files[i].Split('\\').Last());
+                comboBoxFont.Items.Add(files[i].Split('\\').Last());
             }
 
         }
@@ -65,7 +78,7 @@ namespace Clock
             //info += $"\nText:\t{comboBoxFont.SelectedText}";
             //info += $"\nValue:\t{comboBoxFont.SelectedValue}";
             //MessageBox.Show(this, info, "SelectedIndexChanged", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            
+
             SetFont();
         }
 
@@ -74,7 +87,7 @@ namespace Clock
             Directory.SetCurrentDirectory($"{Application.ExecutablePath}\\..\\..\\..\\Fonts");
             PrivateFontCollection pfc = new PrivateFontCollection();
             pfc.AddFontFile(comboBoxFont.SelectedItem.ToString());
-            labelExample.Font = new Font(pfc.Families[0], (float) numericUpDownFontSize.Value);
+            labelExample.Font = new Font(pfc.Families[0], (float)numericUpDownFontSize.Value);
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -82,7 +95,7 @@ namespace Clock
             this.Font = labelExample.Font;
             this.lastChosenIndex = comboBoxFont.SelectedIndex;
 
-            
+            this.Filename = comboBoxFont.SelectedItem.ToString();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
