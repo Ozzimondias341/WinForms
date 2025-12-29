@@ -30,9 +30,10 @@ namespace Clock
             lastChosenWidth = 22;
             comboBoxFont.SelectedIndex = 1;
         }
-        public FontDialog(string fontName) : this()
+        public FontDialog(string fontName, string fontSize) : this()
         {
             Filename = fontName;
+            if(fontSize != null) numericUpDownFontSize.Value = Convert.ToDecimal(fontSize);
             lastChosenIndex = comboBoxFont.FindString(fontName);
             if (lastChosenIndex == -1) lastChosenIndex = 1;
             comboBoxFont.SelectedIndex = lastChosenIndex;
