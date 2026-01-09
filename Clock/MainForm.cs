@@ -17,6 +17,7 @@ namespace Clock
         FontDialog fontDialog;
         ColorDialog foregroundColorDialog;
         ColorDialog backgroundColorDialog;
+        AlarmCreate alarmCreateDialog;
 
         public MainForm()
         {
@@ -35,6 +36,7 @@ namespace Clock
             foregroundColorDialog = new ColorDialog();
             backgroundColorDialog = new ColorDialog();
             fontDialog = new FontDialog();
+            alarmCreateDialog = new AlarmCreate();
 
             LoadSettings();
         }
@@ -82,7 +84,7 @@ namespace Clock
 
             writer.Close();
 
-            System.Diagnostics.Process.Start("notepad", "Settings.ini");
+            //System.Diagnostics.Process.Start("notepad", "Settings.ini");
         }
         void LoadSettings()
         {
@@ -171,7 +173,7 @@ namespace Clock
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-
+            alarmCreateDialog.ShowDialog();
         }
 
         private void tsmiTopmost_Click(object sender, EventArgs e) => this.TopMost = tsmiTopmost.Checked;
