@@ -133,12 +133,13 @@ namespace Clock
                     break;
 
                 case 1:
-                    dateTime = alarmDatePicker.Value;
+                    alarmMode = AlarmMode.Date;
                     break;
             }
 
-            dateTime.Hour = Int32.Parse(label_Hours.Text); 
-           
+            dateTime = new DateTime(alarmDatePicker.Value.Year, alarmDatePicker.Value.Month, alarmDatePicker.Value.Day, Int32.Parse(label_Hours.Text), Int32.Parse(label_Minutes.Text), 0);
+
+
         }
     }
 }

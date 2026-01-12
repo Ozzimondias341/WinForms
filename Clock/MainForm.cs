@@ -20,7 +20,7 @@ namespace Clock
         AlarmCreate alarmCreateDialog;
         AlarmTriggerDialog alarmTriggerDialog;
 
-        Alarm[] alarms; 
+        Alarm[] alarms = Alarm[256]; 
 
         public MainForm()
         {
