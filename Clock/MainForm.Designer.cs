@@ -91,7 +91,7 @@
             this.toolStripSeparator6,
             this.tsmiQuit});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(210, 260);
+            this.contextMenuStrip.Size = new System.Drawing.Size(210, 282);
             // 
             // tsmiTopmost
             // 
@@ -188,6 +188,7 @@
             this.tsmiAlarms.Name = "tsmiAlarms";
             this.tsmiAlarms.Size = new System.Drawing.Size(209, 22);
             this.tsmiAlarms.Text = "Alarms";
+            this.tsmiAlarms.Click += new System.EventHandler(this.tsmiAlarms_Click);
             // 
             // toolStripSeparator5
             // 
