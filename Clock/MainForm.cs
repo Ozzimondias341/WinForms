@@ -18,6 +18,9 @@ namespace Clock
         ColorDialog foregroundColorDialog;
         ColorDialog backgroundColorDialog;
         AlarmCreate alarmCreateDialog;
+        AlarmTriggerDialog alarmTriggerDialog;
+
+        Alarm[] alarms; 
 
         public MainForm()
         {
@@ -37,6 +40,7 @@ namespace Clock
             backgroundColorDialog = new ColorDialog();
             fontDialog = new FontDialog();
             alarmCreateDialog = new AlarmCreate();
+            alarmTriggerDialog = new AlarmTriggerDialog();
 
             LoadSettings();
         }
@@ -165,12 +169,6 @@ namespace Clock
            
         }
 
-
-        private void показатьДатуToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void MainForm_Load(object sender, EventArgs e)
         {
             alarmCreateDialog.ShowDialog();
@@ -234,6 +232,11 @@ namespace Clock
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveSettings();
+        }
+
+        private void tsmiAlarms_Click(object sender, EventArgs e)
+        {
+            alarmCreateDialog.ShowDialog();
         }
     }
 }

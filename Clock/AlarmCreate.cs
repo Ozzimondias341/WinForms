@@ -64,7 +64,7 @@ namespace Clock
             label_Minutes.Text = cbMinutesChoise.Items[cbMinutesChoise.SelectedIndex].ToString();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnMelodyChoise_Click(object sender, EventArgs e)
         {
             openFileDialog.ShowDialog();
         }
@@ -72,6 +72,73 @@ namespace Clock
         private void openFileDialog_FileOk(object sender, CancelEventArgs e)
         {
             MessageBox.Show(openFileDialog.FileName.ToString());
+        }
+
+        private void alarmDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            if (alarmDatePicker.Value < DateTime.Now)
+            {
+                MessageBox.Show("Невозможно выбрать прошедшую дату");
+                alarmDatePicker.Value = DateTime.Now;
+            }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+
+            string melodyPath = openFileDialog.FileName.ToString();
+            AlarmMode alarmMode = new AlarmMode();
+            DayOfWeek[] daysOfWeek = new DayOfWeek[7];
+            DateTime dateTime = DateTime.Now;
+
+            switch(cbMode.SelectedIndex)
+            {
+                case 0:
+                    if (alarmWeekdaysChoise.CheckedItems.Count > 0)
+                    {
+                        for (int i = 0; i < alarmWeekdaysChoise.CheckedItems.Count; i++)
+                        {
+                            switch (alarmWeekdaysChoise.CheckedItems[i])
+                            {
+                                case "Понедельник":
+                                    daysOfWeek[i] = DayOfWeek.Monday;
+                                    break;
+                                case "Вторник":
+                                    daysOfWeek[i] = DayOfWeek.Tuesday;
+                                    break;
+                                case "Среда":
+                                    daysOfWeek[i] = DayOfWeek.Wednesday;
+                                    break;
+                                case "Четверг":
+                                    daysOfWeek[i] = DayOfWeek.Thursday;
+                                    break;
+                                case "Пятница":
+                                    daysOfWeek[i] = DayOfWeek.Friday;
+                                    break;
+                                case "Суббота":
+                                    daysOfWeek[i] = DayOfWeek.Saturday;
+                                    break;
+                                case "Воскресенье":
+                                    daysOfWeek[i] = DayOfWeek.Sunday;
+                                    break;
+
+                            }
+                        }
+                        alarmMode = AlarmMode.Weekdays;
+                    }
+                    else
+                    {
+                        alarmMode = AlarmMode.Everyday;
+                    }
+                    break;
+
+                case 1:
+                    dateTime = alarmDatePicker.Value;
+                    break;
+            }
+
+            dateTime.Hour = Int32.Parse(label_Hours.Text); 
+           
         }
     }
 }

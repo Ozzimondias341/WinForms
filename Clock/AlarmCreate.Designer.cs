@@ -40,7 +40,7 @@
             this.cbHoursChoise = new System.Windows.Forms.ComboBox();
             this.cbMinutesChoise = new System.Windows.Forms.ComboBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMelodyChoise = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cbMode
@@ -79,10 +79,11 @@
             this.alarmDatePicker.Name = "alarmDatePicker";
             this.alarmDatePicker.Size = new System.Drawing.Size(120, 20);
             this.alarmDatePicker.TabIndex = 2;
+            this.alarmDatePicker.ValueChanged += new System.EventHandler(this.alarmDatePicker_ValueChanged);
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(315, 127);
+            this.btnCancel.Location = new System.Drawing.Point(306, 162);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -92,18 +93,19 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(234, 127);
+            this.btnOk.Location = new System.Drawing.Point(225, 162);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 4;
             this.btnOk.Text = "ОК";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // label_Hours
             // 
             this.label_Hours.AutoSize = true;
             this.label_Hours.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Hours.Location = new System.Drawing.Point(204, 42);
+            this.label_Hours.Location = new System.Drawing.Point(195, 64);
             this.label_Hours.Name = "label_Hours";
             this.label_Hours.Size = new System.Drawing.Size(70, 51);
             this.label_Hours.TabIndex = 5;
@@ -113,7 +115,7 @@
             // 
             this.label_Colon.AutoSize = true;
             this.label_Colon.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Colon.Location = new System.Drawing.Point(280, 41);
+            this.label_Colon.Location = new System.Drawing.Point(271, 63);
             this.label_Colon.Name = "label_Colon";
             this.label_Colon.Size = new System.Drawing.Size(34, 51);
             this.label_Colon.TabIndex = 6;
@@ -123,7 +125,7 @@
             // 
             this.label_Minutes.AutoSize = true;
             this.label_Minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 32.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_Minutes.Location = new System.Drawing.Point(320, 42);
+            this.label_Minutes.Location = new System.Drawing.Point(311, 64);
             this.label_Minutes.Name = "label_Minutes";
             this.label_Minutes.Size = new System.Drawing.Size(70, 51);
             this.label_Minutes.TabIndex = 7;
@@ -132,7 +134,7 @@
             // cbHoursChoise
             // 
             this.cbHoursChoise.FormattingEnabled = true;
-            this.cbHoursChoise.Location = new System.Drawing.Point(204, 18);
+            this.cbHoursChoise.Location = new System.Drawing.Point(195, 40);
             this.cbHoursChoise.Name = "cbHoursChoise";
             this.cbHoursChoise.Size = new System.Drawing.Size(70, 21);
             this.cbHoursChoise.TabIndex = 8;
@@ -141,7 +143,7 @@
             // cbMinutesChoise
             // 
             this.cbMinutesChoise.FormattingEnabled = true;
-            this.cbMinutesChoise.Location = new System.Drawing.Point(321, 18);
+            this.cbMinutesChoise.Location = new System.Drawing.Point(312, 40);
             this.cbMinutesChoise.Name = "cbMinutesChoise";
             this.cbMinutesChoise.Size = new System.Drawing.Size(70, 21);
             this.cbMinutesChoise.TabIndex = 9;
@@ -149,26 +151,27 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog";
+            this.openFileDialog.FileName = "C:\\Users\\Максим\\Desktop\\Programming\\WPF\\WinForms\\Clock\\Melody\\Starset_-_My_Demons" +
+    "_56774126.mp3";
             this.openFileDialog.Filter = "\"MP3 файлы (*.mp3)|*.mp3|Все файлы (*.*)|*.*\"";
             this.openFileDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog_FileOk);
             // 
-            // button1
+            // btnMelodyChoise
             // 
-            this.button1.Location = new System.Drawing.Point(153, 132);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnMelodyChoise.Location = new System.Drawing.Point(12, 162);
+            this.btnMelodyChoise.Name = "btnMelodyChoise";
+            this.btnMelodyChoise.Size = new System.Drawing.Size(121, 23);
+            this.btnMelodyChoise.TabIndex = 10;
+            this.btnMelodyChoise.Text = "Выбор мелодии";
+            this.btnMelodyChoise.UseVisualStyleBackColor = true;
+            this.btnMelodyChoise.Click += new System.EventHandler(this.btnMelodyChoise_Click);
             // 
             // AlarmCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 167);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(396, 197);
+            this.Controls.Add(this.btnMelodyChoise);
             this.Controls.Add(this.cbMinutesChoise);
             this.Controls.Add(this.cbHoursChoise);
             this.Controls.Add(this.label_Minutes);
@@ -200,6 +203,6 @@
         private System.Windows.Forms.ComboBox cbHoursChoise;
         private System.Windows.Forms.ComboBox cbMinutesChoise;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMelodyChoise;
     }
 }

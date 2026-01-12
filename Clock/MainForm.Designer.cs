@@ -121,7 +121,6 @@
             this.tsmiShowDate.Size = new System.Drawing.Size(209, 22);
             this.tsmiShowDate.Text = "Show date";
             this.tsmiShowDate.CheckedChanged += new System.EventHandler(this.tsmiShowDate_CheckedChanged);
-            this.tsmiShowDate.Click += new System.EventHandler(this.показатьДатуToolStripMenuItem_Click);
             // 
             // tsmiShowWeekday
             // 
@@ -188,6 +187,7 @@
             this.tsmiAlarms.Name = "tsmiAlarms";
             this.tsmiAlarms.Size = new System.Drawing.Size(209, 22);
             this.tsmiAlarms.Text = "Alarms";
+            this.tsmiAlarms.Click += new System.EventHandler(this.tsmiAlarms_Click);
             // 
             // toolStripSeparator5
             // 
@@ -280,7 +280,6 @@
             this.Name = "MainForm";
             this.Text = "Clock PV_521";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
