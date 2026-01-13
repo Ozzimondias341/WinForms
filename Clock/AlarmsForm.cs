@@ -23,6 +23,11 @@ namespace Clock
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            alarm.Location = new Point
+                (
+                this.Location.X + this.Width / 4,
+                this.Location.Y + this.Height / 6
+                );
             alarm.ShowDialog();   
         }
     }
