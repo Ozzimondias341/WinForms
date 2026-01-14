@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Clock
 {
-    class Week
+    public class Week
     {
         static readonly string[] NAMES = { "Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс" };
         byte days;
@@ -21,7 +21,7 @@ namespace Clock
             for (byte i = 0; i < 7; i++)
             {
                 byte day = (byte)(1 << i);
-                if ((this.days & day) != 0) days += NAMES[i];
+                if ((this.days & day) != 0) days += $"{NAMES[i]}, ";
             }
 
             /*
@@ -31,7 +31,7 @@ namespace Clock
              ^ XOR - исключающее OR. 1 даёт только 1 и 0, но не 1 и 1 \ 0 и 0
              */
 
-            return base.ToString();
+            return days;
         }
     }
 }

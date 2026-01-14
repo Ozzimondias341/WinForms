@@ -28,7 +28,10 @@ namespace Clock
                 this.Location.X + this.Width / 4,
                 this.Location.Y + this.Height / 6
                 );
-            alarm.ShowDialog();   
+            if (alarm.ShowDialog() == DialogResult.OK)
+            {
+                listBoxAlarms.Items.Add(alarm.Alarm);
+            }
         }
     }
 }
