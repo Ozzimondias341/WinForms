@@ -35,9 +35,36 @@ namespace Clock
             }
         }
 
-        private void clbWeekdays_ItemCheck(object sender, ItemCheckEventArgs e)
+        private void clbWeekdays_SelectedIndexChanged(object sender, EventArgs e)
         {
-            MessageBox.Show("Буба");
+            Console.WriteLine("clbWeekdays_SelectedIndexChanged");
+
+            for (int i = 0; i < clbWeekdays.CheckedItems.Count; i++)
+            {
+                Console.Write($"{clbWeekdays.CheckedItems[i]}\t");
+            }
+                Console.WriteLine();
+
+            byte days = 0;
+
+            for(int i = 0; i <clbWeekdays.CheckedIndices.Count;i++)
+            {
+                days |= (byte)(1 << clbWeekdays.CheckedIndices[i]);
+                Console.Write($"{clbWeekdays.CheckedIndices[i]}\t");
+            }
+            Console.WriteLine() ;
+            Console.WriteLine($"Days mask: {days}");
+            Console.WriteLine("\n-------------------------------------------------------------------\n");
+        }
+        byte GetDaysMask()
+        {
+            byte days = 0;
+
+            for (int i = 0; i < clbWeekdays.CheckedIndices.Count; i++)
+            {
+                days |= (byte)(1 << clbWeekdays.CheckedIndices[i]);
+            }
+            return days;
         }
     }
 }
