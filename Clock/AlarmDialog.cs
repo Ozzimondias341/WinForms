@@ -34,5 +34,10 @@ namespace Clock
                 labelFilename.Text = fileDialog.FileName;
             }
         }
+
+        private void clbWeekdays_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            MessageBox.Show("Буба");
+        }
     }
 }
