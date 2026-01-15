@@ -33,5 +33,14 @@ namespace Clock
                 listBoxAlarms.Items.Add(alarm.Alarm);
             }
         }
+
+        private void listBoxAlarms_DoubleClick(object sender, EventArgs e)
+        {
+            if(listBoxAlarms.SelectedIndex != null)
+            {
+                alarm.ShowDialog();
+                
+            }
+        }
     }
 }

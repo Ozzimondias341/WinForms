@@ -22,6 +22,22 @@ namespace Clock
             fileDialog.Filter = "Audio files (*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg)|*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg|All Files (*.*)|*.*";
             Alarm = new Alarm();
         }
+        public AlarmDialog(Alarm alarm)
+        {
+            InitializeComponent();
+            dtpDate.Value = alarm.Date;
+            dtpTime.Value = alarm.Time;
+            if(alarm.Days.ToString() == "")
+            {
+                dtpDate.Enabled = true;
+            }
+            for (int i = 0; i < clbWeekdays.Items.Count; i++)
+            {
+                bool isChecked = (alarm.Days.days & (1 << i)) != 0;
+                clbWeekdays.SetItemChecked(i, isChecked);
+            }
+            
+        }
 
         private void checkBoxUseDate_CheckedChanged(object sender, EventArgs e)
         {
@@ -33,7 +49,7 @@ namespace Clock
         {
             if(fileDialog.ShowDialog() == DialogResult.OK)
             {
-                labelFilename.Text = fileDialog.FileName;
+                labelFilename.Text = $"Filename: {fileDialog.FileName}";
             }
         }
 
