@@ -36,10 +36,12 @@
             // 
             // listBoxAlarms
             // 
+            this.listBoxAlarms.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.listBoxAlarms.FormattingEnabled = true;
+            this.listBoxAlarms.ItemHeight = 20;
             this.listBoxAlarms.Location = new System.Drawing.Point(13, 13);
             this.listBoxAlarms.Name = "listBoxAlarms";
-            this.listBoxAlarms.Size = new System.Drawing.Size(620, 316);
+            this.listBoxAlarms.Size = new System.Drawing.Size(620, 304);
             this.listBoxAlarms.TabIndex = 0;
             this.listBoxAlarms.DoubleClick += new System.EventHandler(this.listBoxAlarms_DoubleClick);
             // 
