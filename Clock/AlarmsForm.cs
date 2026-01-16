@@ -12,7 +12,7 @@ namespace Clock
 {
     public partial class AlarmsForm : Form
     {
-
+        public ListBox List { get => listBoxAlarms; }
         public AlarmsForm()
         {
             InitializeComponent();
@@ -45,6 +45,12 @@ namespace Clock
             {
                 buttonAdd_Click(sender, e);
             }
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (listBoxAlarms.Items.Count <= 0 && listBoxAlarms.SelectedItem == null) return;
+            listBoxAlarms.Items.Remove(listBoxAlarms.SelectedIndex);
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Clock
         ColorDialog foregroundColorDialog;
         ColorDialog backgroundColorDialog;
         AlarmsForm alarmFormDialog;
+        Alarm alarm;
 
         public MainForm()
         {
@@ -38,6 +39,7 @@ namespace Clock
             backgroundColorDialog = new ColorDialog();
             fontDialog = new FontDialog();
             alarmFormDialog = new AlarmsForm();
+            alarm = null;
 
             LoadSettings();
         }
@@ -141,9 +143,26 @@ namespace Clock
                 labelTime.Text += $"\n{DateTime.Now.DayOfWeek}";
             }
 
+            if (
+                alarm != null
+                && alarm.Time.Hours == DateTime.Now.Hour
+                && alarm.Time.Minutes == DateTime.Now.Minute
+                && alarm.Time.Seconds == DateTime.Now.Second
+                )
+            {
+                MessageBox.Show("Сосал");
+            }
+            if(DateTime.Now.Second % 5 == 0) alarm = FindNextAlarm();
+
             notifyIcon.Text = labelTime.Text;
         }
 
+        Alarm FindNextAlarm()
+        {
+            Alarm[] actualAlarms = alarmFormDialog.List.Items.Cast<Alarm>().Where( a => a.Time > DateTime.Now.TimeOfDay).ToArray();
+            return actualAlarms.Min();
+        }
+        
 
 
         private void btnHideControls_Click(object sender, EventArgs e)
@@ -246,7 +265,6 @@ namespace Clock
             this.Location.Y + 10
             );
             alarmFormDialog.ShowDialog();
-
         }
 
         private void tsmiShowConsole_CheckedChanged(object sender, EventArgs e)
