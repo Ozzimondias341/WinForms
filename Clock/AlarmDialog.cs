@@ -22,22 +22,24 @@ namespace Clock
             fileDialog.Filter = "Audio files (*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg)|*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg|All Files (*.*)|*.*";
             Alarm = new Alarm();
         }
-        public AlarmDialog(Alarm alarm)
+        public AlarmDialog(Alarm alarm): this()
         {
-            InitializeComponent();
-            dtpDate.Value = alarm.Date;
-            dtpTime.Value = alarm.Time;
-            if(alarm.Days.ToString() == "")
-            {
-                dtpDate.Enabled = true;
-            }
-            for (int i = 0; i < clbWeekdays.Items.Count; i++)
-            {
-                bool isChecked = (alarm.Days.days & (1 << i)) != 0;
-                clbWeekdays.SetItemChecked(i, isChecked);
-            }
-            
+            Alarm = alarm;
+            Extract();
         }
+
+        void Extract()
+        {
+            if (Alarm.Date != DateTime.MaxValue)
+            {
+                dtpDate.Value = Alarm.Date;
+                checkBoxUseDate.Checked = true;
+            }
+            dtpTime.Value = Alarm.Time;
+            labelFilename.Text = Alarm.Filename;
+            Alarm.Days.Extract(clbWeekdays);
+        }
+
 
         private void checkBoxUseDate_CheckedChanged(object sender, EventArgs e)
         {

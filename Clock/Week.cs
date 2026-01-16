@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Clock
 {
@@ -14,6 +15,18 @@ namespace Clock
         {
             this.days = days;
         }
+
+        public void Extract(System.Windows.Forms.CheckedListBox list)
+        {
+            if (list.Items.Count == 0) return;
+
+            for(int i = 0;i < 7; i++)
+            {
+                int d = ((1 << i) & days);
+                list.SetItemChecked(i, Convert.ToBoolean(d));
+            }
+        }
+
         public override string ToString()
         {
             string days = "";

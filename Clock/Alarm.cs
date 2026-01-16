@@ -13,6 +13,16 @@ namespace Clock
         public Week Days { get; set; }
         public string Filename { get; set; }
 
+        public Alarm() { }
+
+        public Alarm(Alarm alarm)
+        {
+            this.Date = alarm.Date;
+            this.Time = alarm.Time;
+            this.Days = alarm.Days;
+            this.Filename = alarm.Filename;
+        }
+
         public override string ToString()
         {
             //return $"{Date}, {Time}, {Days.ToString()}, {Filename}";
