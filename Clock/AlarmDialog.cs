@@ -21,6 +21,10 @@ namespace Clock
             fileDialog = new OpenFileDialog();
             fileDialog.Filter = "Audio files (*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg)|*.mp3;*.wav;*.wma;*.aac;*.flac;*.m4a;*.ogg|All Files (*.*)|*.*";
             Alarm = new Alarm();
+            for (int i = 0; i < 7; i++)
+            {
+                clbWeekdays.SetItemChecked(i, true);
+            }
         }
         public AlarmDialog(Alarm alarm): this()
         {

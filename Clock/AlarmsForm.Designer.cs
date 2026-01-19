@@ -75,6 +75,7 @@
             this.Controls.Add(this.listBoxAlarms);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AlarmsForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Alarms";
             this.ResumeLayout(false);
