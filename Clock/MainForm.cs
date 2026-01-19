@@ -158,8 +158,7 @@ namespace Clock
             {
                 MessageBox.Show("Будильник");
             }
-            if(DateTime.Now.Second % 5 == 0) alarm = FindNextAlarm();
-
+            if (DateTime.Now.Second % 5 == 0) alarm = FindNextAlarm();
             notifyIcon.Text = labelTime.Text;
         }
 

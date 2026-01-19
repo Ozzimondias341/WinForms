@@ -21,15 +21,17 @@ namespace Clock
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            AlarmDialog alarm = new AlarmDialog();
-            alarm.Location = new Point
+            AlarmDialog alarmDialog = new AlarmDialog();
+            alarmDialog.Location = new Point
                 (
                 this.Location.X + this.Width / 4,
                 this.Location.Y + this.Height / 6
                 );
-            if (alarm.ShowDialog() == DialogResult.OK)
+            if (alarmDialog.ShowDialog() == DialogResult.OK)
             {
-                listBoxAlarms.Items.Add(new Alarm(alarm.Alarm));
+                Alarm alarm = new Alarm(alarmDialog.Alarm);
+                if (alarm.Days == new Week(0)) alarm.Days = new Week(127);
+                listBoxAlarms.Items.Add(alarm);
             }
         }
 
