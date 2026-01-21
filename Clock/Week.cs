@@ -53,5 +53,7 @@ namespace Clock
 
             return days;
         }
+
+        public byte GetMask() => days;
     }
 }
