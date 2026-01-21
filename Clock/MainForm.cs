@@ -20,7 +20,7 @@ namespace Clock
         ColorDialog backgroundColorDialog;
         AlarmsForm alarmFormDialog;
         Alarm alarm;
-
+       
         public MainForm()
         {
 
@@ -40,6 +40,7 @@ namespace Clock
             fontDialog = new FontDialog();
             alarmFormDialog = new AlarmsForm();
             alarm = null;
+            this.axWindowsMediaPlayer.Visible = false;
 
             LoadSettings();
         }
@@ -124,6 +125,21 @@ namespace Clock
             }
         }
 
+        void PlayAlarm()
+        {
+            axWindowsMediaPlayer.URL = alarm.Filename;
+            axWindowsMediaPlayer.settings.volume = 100;
+            axWindowsMediaPlayer.Ctlcontrols.play();
+            axWindowsMediaPlayer.Visible = true;
+        }
+        void SetPlayerInvisible(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            if(
+                axWindowsMediaPlayer.playState == WMPLib.WMPPlayState.wmppsMediaEnded ||
+                axWindowsMediaPlayer.playState == WMPLib.WMPPlayState.wmppsStopped
+                )
+                axWindowsMediaPlayer.Visible = false;
+        }
 
         private void timer_Tick(object sender, EventArgs e)
         {
@@ -156,7 +172,7 @@ namespace Clock
                 && alarm.Time.Seconds == DateTime.Now.Second
                 )
             {
-                MessageBox.Show("Будильник");
+                PlayAlarm();
             }
             if (DateTime.Now.Second % 5 == 0) alarm = FindNextAlarm();
             notifyIcon.Text = labelTime.Text;
